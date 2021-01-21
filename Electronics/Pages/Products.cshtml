@@ -4,63 +4,42 @@
 @{
     ViewData["Title"] = "Products";
 }
-
-<h1>Products</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].IsAvailable)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Thumbnail)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thumbnail)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="px-5 py-2 pb-4">
+    
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <h3 class="mt-2">Filters</h3>
+        <form method="get">
+            <input class="form-control border-success mb-2" style="border-radius:2em;" asp-for="SearchTerm" placeholder="Search Term ..." />
+            <hr />
+            <div class="form-group">
+                <label asp-for="CategoryID" class="control-label"></label>
+                <select class="form-control" asp-for="CategoryID" title="Select A Category"
+                        asp-items="@(new SelectList(Model.Categories,"ID","CategoryName"))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Filter" />
+        </form>
+    </div>
+    <div class="col-lg-9 row">
+        @foreach (var item in Model.Product)
+        {
+            <div class="col-sm-4 p-2">
+                <div class="card border-0 rounded-0 shadow-sm">
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <img src="~/image/@item.Thumbnail" class="card-img-top" alt="Product Image">
+                    </a>
+                    <div class="card-body p-2">
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn p-0"><h5 class="card-title">@item.ProductName</h5></a>
+                    </div>
+                    <div class="card-footer border-0">
+                        <span>@item.ProductPrice DA</span>
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-primary ">Check</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

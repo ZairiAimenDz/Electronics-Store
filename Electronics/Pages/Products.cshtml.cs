@@ -19,12 +19,35 @@ namespace Electronics.Pages
             _context = context;
         }
 
-        public IList<Product> Product { get;set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public Guid CategoryID { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public double PriceMin{ get; set; }
+        [BindProperty(SupportsGet = true)]
+        public double PriceMax{ get; set; }
+
+        public List<Category> Categories;
+
+        public IList<Product> Product { get; set; } = new List<Product>();
 
         public async Task OnGetAsync()
         {
-            Product = await _context.Product
-                .Include(p => p.Category).ToListAsync();
+            var querry = _context.Product.Include(p => p.Category);
+            Categories = _context.Category.ToList();
+            if (!string.IsNullOrEmpty(SearchTerm))
+                Product = await querry.Where(c => c.ProductName.ToLower().Contains(SearchTerm) || c.ProductDescription.ToLower().Contains(SearchTerm)).ToListAsync();
+                   // .Where();
+            else
+            {
+                Product = await querry.ToListAsync();
+            }
+            if(Categories.Where(c=>c.ID == CategoryID).Count() > 0)
+            {
+                Product = Product.Where(p => p.CategoryID == CategoryID).ToList();
+            }
         }
     }
 }
