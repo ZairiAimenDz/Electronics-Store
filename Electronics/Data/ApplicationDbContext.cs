@@ -14,5 +14,6 @@ namespace Electronics.Data
         {
         }
         public DbSet<Electronics.Models.Category> Category { get; set; }
+        public DbSet<Electronics.Models.Product> Product { get; set; }
     }
 }

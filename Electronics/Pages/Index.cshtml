@@ -12,17 +12,19 @@
         <div class="ml-auto"><a href="#" class="btn btn-outline-primary">See All Products</a></div>
     </div>
     <div class="row">
-        @for (int i = 0; i < 8; i++)
+        @foreach (var item in Model.LastProds)
         {
             <div class="col-sm-4 col-lg-3 p-2">
                 <div class="card border-0 rounded-0 shadow-sm">
-                    <img src="~/image/default_product.png" class="card-img-top" alt="Product Image">
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <img src="~/image/@item.Thumbnail" class="card-img-top" alt="Product Image">
+                    </a>
                     <div class="card-body p-2">
-                        <a href="#" class="btn p-0"><h5 class="card-title">Product Numba One</h5></a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn p-0"><h5 class="card-title">@item.ProductName</h5></a>
                     </div>
                     <div class="card-footer border-0">
-                        <span>12 000$</span>
-                        <a href="#" class="btn btn-primary ">Check</a>
+                        <span>@item.ProductPrice DA</span>
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-primary ">Check</a>
                     </div>
                 </div>
             </div>
