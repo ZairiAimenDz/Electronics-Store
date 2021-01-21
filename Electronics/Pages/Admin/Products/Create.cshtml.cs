@@ -10,9 +10,11 @@ using Electronics.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Electronics.Pages.Admin.Products
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly Electronics.Data.ApplicationDbContext _context;

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Electronics.Data;
 using Electronics.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Electronics.Pages.Admin.Products
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Electronics.Data.ApplicationDbContext _context;
