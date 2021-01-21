@@ -8,8 +8,21 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <div style="background-color:#000;">
+        <div class="container align-self-center text-center">
+            <p class="text-white">
+                Sat-Thu : 9:00 to 21:00
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Call-Us On : <span>(0123) 45 67 89</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#"><i class="fab text-white fa-facebook"></i></a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#"><i class="fab text-white fa-instagram"></i></a>
+            </p>
+        </div>
+    </div>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent font-weight-bold mb-4">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Electronics</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -45,7 +58,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/js/all.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

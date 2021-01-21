@@ -4,7 +4,72 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<img src="~/image/announcement.png" class="w-100" style="max-height:100vh;" />
+
+<div class="mt-5 mb-5 p-2">
+    <div class="row p-2">
+        <h1>Latest Added</h1>
+        <div class="ml-auto"><a href="#" class="btn btn-outline-primary">See All Products</a></div>
+    </div>
+    <div class="row">
+        @for (int i = 0; i < 8; i++)
+        {
+            <div class="col-sm-4 col-lg-3 p-2">
+                <div class="card border-0 rounded-0 shadow-sm">
+                    <img src="~/image/default_product.png" class="card-img-top" alt="Product Image">
+                    <div class="card-body p-2">
+                        <a href="#" class="btn p-0"><h5 class="card-title">Product Numba One</h5></a>
+                    </div>
+                    <div class="card-footer border-0">
+                        <span>12 000$</span>
+                        <a href="#" class="btn btn-primary ">Check</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr style="width:70vh;" class="text-center" />
+
+<div class="row mt-5 mb-5 p-2">
+    <div class="col-lg-4 text-center px-5">
+        <div>
+            <h3>
+                <i class="fas fa-user"></i> User Accounts
+            </h3>
+            <p>Having An Account Gives You The Ability To Track Your Orders Progress, Have Special Offers And Much More ...</p>
+        </div>
+    </div>
+    <div class="col-lg-4 text-center px-5">
+        <div>
+            <h3>
+                <i class="fas fa-shipping-fast"></i> Delivery To All Wilayas
+            </h3>
+            <p>Wherever You Are Your Orders Will Be Delivered To You In Record Times</p>
+        </div>
+    </div>
+    <div class="col-lg-4 text-center px-5">
+        <div>
+            <h3>
+                <i class="fas fa-toolbox"></i> 15 Days Warranty
+            </h3>
+            <p>If Something Was Wrong With Your Computer In The First 15 Days of Purchase We Will Fix It <a href="#">Read More About Fixing Policy</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="p-2 text-white" style="background-color:black">
+    <div class="row">
+        <div class="col-lg-6 px-3 py-1">
+            <img src="https://www.apple.com/newsroom/images/product/apps/standard/Apple_Maps_01302020_LP_hero.jpg.og.jpg" class="w-100" />
+        </div>
+        <div class="col-lg-6 p-3">
+            <h1>
+                Contact Information :
+            </h1>
+            <p>Phone : (0123) 45 67 89</p>
+            <p>Email : Email@MyWebsite.com</p>
+        </div>
+    </div>
 </div>
