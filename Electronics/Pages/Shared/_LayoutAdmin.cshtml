@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ElectronicsStore</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-arrow-left"></i> <span class="font-weight-bold">Back</span></a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index"><i class="fas fa-arrow-left"></i> <span class="font-weight-bold">Back</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,16 +19,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fas fa-chart-line"></i> Dashboard</a>
+                            <a class="nav-link text-dark" asp-area=""  asp-page="/Admin/Index"><i class="fas fa-chart-line"></i> Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-boxes"></i> Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Index"><i class="fas fa-boxes"></i> Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Categories"><i class="fas fa-archive"></i> Categories</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Categories/Index"><i class="fas fa-archive"></i> Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-shipping-fast"></i> Orders</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Index"><i class="fas fa-shipping-fast"></i> Orders</a>
                         </li>
                     </ul>
                 </div>

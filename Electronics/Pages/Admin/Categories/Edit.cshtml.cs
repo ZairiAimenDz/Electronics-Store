@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Electronics.Data;
 using Electronics.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Electronics.Pages.Admin.Categories
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly Electronics.Data.ApplicationDbContext _context;

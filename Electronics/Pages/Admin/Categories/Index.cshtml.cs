@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Electronics.Data;
 using Electronics.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Electronics.Pages.Admin.Categories
 {
+    [Authorize(Roles="Admin")]
     public class IndexModel : PageModel
     {
         private readonly Electronics.Data.ApplicationDbContext _context;

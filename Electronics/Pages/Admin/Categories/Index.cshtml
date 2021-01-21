@@ -2,7 +2,7 @@
 @model Electronics.Pages.Admin.Categories.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categories";
     Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
 }
 <div class="row pt-4">
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Category.CategoryDescription" class="control-label"></label>
-                <input asp-for="Category.CategoryDescription" class="form-control" />
+                <textarea asp-for="Category.CategoryDescription" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Category.CategoryDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
