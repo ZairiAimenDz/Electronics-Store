@@ -48,6 +48,14 @@ namespace Electronics.Pages
             {
                 Product = Product.Where(p => p.CategoryID == CategoryID).ToList();
             }
+            if(PriceMin > 0)
+            {
+                Product = Product.Where(p => p.ProductPrice > PriceMin).ToList();
+            }
+            if(PriceMax > 0)
+            {
+                Product = Product.Where(p => p.ProductPrice < PriceMax).ToList();
+            }
         }
     }
 }

@@ -5,13 +5,13 @@
     ViewData["Title"] = "Products";
 }
 <div class="px-5 py-2 pb-4">
-    
+
 </div>
 <div class="row">
     <div class="col-lg-3">
         <h3 class="mt-2">Filters</h3>
         <form method="get">
-            <input class="form-control border-success mb-2" style="border-radius:2em;" asp-for="SearchTerm" placeholder="Search Term ..." />
+            <input class="form-control mb-2" style="border-radius:2em;" asp-for="SearchTerm" placeholder="Search Term ..." />
             <hr />
             <div class="form-group">
                 <label asp-for="CategoryID" class="control-label"></label>
@@ -20,8 +20,19 @@
                     <option value="all">All</option>
                 </select>
             </div>
+            <hr />
+            <label>Price Range</label>
+            <div class="form-row mb-2">
+                <div class="col">
+                    <input type="number" class="form-control" asp-for="PriceMin" placeholder="Min Price">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" asp-for="PriceMax" placeholder="Max Price">
+                </div>
+            </div>
             <input class="btn btn-primary" type="submit" value="Filter" />
         </form>
+
     </div>
     <div class="col-lg-9 row">
         @foreach (var item in Model.Product)
