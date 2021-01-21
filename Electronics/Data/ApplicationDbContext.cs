@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Electronics.Models;
 
 namespace Electronics.Data
 {
@@ -12,5 +13,6 @@ namespace Electronics.Data
             : base(options)
         {
         }
+        public DbSet<Electronics.Models.Category> Category { get; set; }
     }
 }

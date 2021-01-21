@@ -1,0 +1,67 @@
+﻿@page
+@model Electronics.Pages.Admin.Categories.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row pt-4">
+    <div class="col-md-4 px-2">
+        <h4>Adding A New Category</h4>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Category.CategoryName" class="control-label"></label>
+                <input asp-for="Category.CategoryName" class="form-control" />
+                <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category.CategoryDescription" class="control-label"></label>
+                <input asp-for="Category.CategoryDescription" class="form-control" />
+                <span asp-validation-for="Category.CategoryDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8 px-2">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="w-auto">
+                        Category Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Categs.Count() > 0)
+                {
+
+                    @foreach (var item in Model.Categs)
+                    {
+                        <tr>
+                            <td>
+                                @item.CategoryName
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" class="btn btn-success" asp-route-id="@item.ID">Edit</a> 
+                                <a asp-page="./Delete" class="btn btn-danger" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
