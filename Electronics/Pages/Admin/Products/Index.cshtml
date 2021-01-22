@@ -6,10 +6,10 @@
     Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
+<h1>All Products</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -57,9 +57,9 @@
                 <img src="~/image/@item.Thumbnail" height="64"/>
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> 
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> 
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Sold</a>
             </td>
         </tr>
 }

@@ -35,27 +35,24 @@ namespace Electronics.Pages
 
         public async Task OnGetAsync()
         {
-            var querry = _context.Product.Include(p => p.Category);
+            var querry = _context.Product.Include(p => p.Category).Where(p=>p.IsAvailable);
             Categories = _context.Category.ToList();
             if (!string.IsNullOrEmpty(SearchTerm))
-                Product = await querry.Where(c => c.ProductName.ToLower().Contains(SearchTerm) || c.ProductDescription.ToLower().Contains(SearchTerm)).ToListAsync();
+                querry = querry.Where(c => c.ProductName.ToLower().Contains(SearchTerm) || c.ProductDescription.ToLower().Contains(SearchTerm));
                    // .Where();
-            else
-            {
-                Product = await querry.ToListAsync();
-            }
             if(Categories.Where(c=>c.ID == CategoryID).Count() > 0)
             {
-                Product = Product.Where(p => p.CategoryID == CategoryID).ToList();
+                querry = querry.Where(p => p.CategoryID == CategoryID);
             }
             if(PriceMin > 0)
             {
-                Product = Product.Where(p => p.ProductPrice > PriceMin).ToList();
+                querry = querry.Where(p => p.ProductPrice > PriceMin);
             }
             if(PriceMax > 0)
             {
-                Product = Product.Where(p => p.ProductPrice < PriceMax).ToList();
+                querry = querry.Where(p => p.ProductPrice < PriceMax);
             }
+            Product = await querry.ToListAsync();
         }
     }
 }
