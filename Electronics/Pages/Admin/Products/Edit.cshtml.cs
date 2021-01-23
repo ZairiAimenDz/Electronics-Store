@@ -51,7 +51,7 @@ namespace Electronics.Pages.Admin.Products
             {
                 return Page();
             }
-
+            Product.AddedDate = DateTime.Now;
             _context.Attach(Product).State = EntityState.Modified;
 
             try

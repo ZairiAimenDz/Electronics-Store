@@ -24,7 +24,7 @@ namespace Electronics.Pages
         public List<Product> LastProds;
         public void OnGet()
         {
-            LastProds = db.Product.Take(8).ToList();
+            LastProds = db.Product.OrderByDescending(c=>c.AddedDate).Take(8).ToList();
         }
     }
 }

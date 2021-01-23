@@ -57,7 +57,7 @@ namespace Electronics.Pages
             {
                 querry = querry.Where(p => p.ProductPrice < PriceMax);
             }
-            Product = await querry.OrderBy(p=>p.ProductName).Skip(EPP*Currentpage).Take(EPP).ToListAsync();
+            Product = await querry.OrderByDescending(p=>p.AddedDate).Skip(EPP*Currentpage).Take(EPP).ToListAsync();
         }
     }
 }

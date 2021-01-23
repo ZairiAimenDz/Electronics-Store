@@ -12,6 +12,8 @@ namespace Electronics.Models
     {
         [Key]
         public Guid ID { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime AddedDate { get; set; }
         [Required]
         public string ProductName { get; set; }
         [Required]
