@@ -10,9 +10,9 @@
 
 <h4>Product</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form enctype="multipart/form-data" method="post">
+<form enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-md-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Product.ProductName" class="control-label"></label>
@@ -30,30 +30,28 @@
                         asp-items="@(new SelectList(Model.Categories,"ID","CategoryName"))"></select>
                 <span asp-validation-for="Product.CategoryID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Product.ProductDescription" class="control-label"></label>
-                <input asp-for="Product.ProductDescription" class="form-control" />
-                <span asp-validation-for="Product.ProductDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Product.IsAvailable" /> @Html.DisplayNameFor(model => model.Product.IsAvailable)
-                </label>
-            </div>
+        </div>
+        <div class="col-md-3">
             <div class="form-group">
                 <label asp-for="Product.Thumbnail" class="control-label"></label>
                 <input asp-for="Product.ThumbnailFile" class="form-control" />
                 <span asp-validation-for="Product.Thumbnail" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-6">
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Product.ProductDescription" class="control-label"></label>
+                <textarea asp-for="Product.ProductDescription" class="form-control" rows="8"></textarea>
+                <span asp-validation-for="Product.ProductDescription" class="text-danger"></span>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a class="btn btn-warning" asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

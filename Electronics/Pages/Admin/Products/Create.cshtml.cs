@@ -44,6 +44,7 @@ namespace Electronics.Pages.Admin.Products
             }
             Product.Thumbnail = UploadFile(Product.ThumbnailFile);
             Product.AddedDate = DateTime.Now;
+            Product.IsAvailable = true;
             _context.Category.Where(c => c.ID == Product.CategoryID).FirstOrDefault().Products.Add(Product);
             await _context.SaveChangesAsync();
 

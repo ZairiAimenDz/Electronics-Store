@@ -11,7 +11,7 @@
         <h3 class="mb-2 font-weight-bold text-info">@Model.Product.ProductPrice DA</h3>
         <h2>@Model.Product.ProductName</h2>
         <hr />
-        <p>@Model.Product.ProductDescription</p>
+        <p>@Html.Raw(Model.Product.ProductDescription)</p>
     </div>
     <div class="col-lg-6">
         <img class="w-100" src="~/image/@Model.Product.Thumbnail" />

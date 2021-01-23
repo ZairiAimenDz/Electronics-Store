@@ -8,7 +8,7 @@
 
 <h1>All Products</h1>
 
-<p>
+<p class="mt-2">
     <a class="btn btn-primary" asp-page="Create">Create New</a>
 </p>
 <table class="table">
@@ -19,9 +19,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductDescription)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].Category)
@@ -43,9 +40,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
