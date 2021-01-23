@@ -29,7 +29,7 @@ namespace Electronics.Pages.Admin.Products
         public async Task OnGetAsync()
         {
             Product = await _context.Product
-                .Include(p => p.Category).Skip(EPP*Currentpage).Take(EPP).ToListAsync();
+                .Include(p => p.Category).OrderBy(p => p.ProductName).Skip(EPP*Currentpage).Take(EPP).ToListAsync();
         }
     }
 }
