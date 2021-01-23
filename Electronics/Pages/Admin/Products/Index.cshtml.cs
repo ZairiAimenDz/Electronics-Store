@@ -21,12 +21,15 @@ namespace Electronics.Pages.Admin.Products
             _context = context;
         }
 
+        public readonly int EPP = 12;
         public IList<Product> Product { get;set; }
+        [BindProperty(SupportsGet = true)]
+        public int Currentpage { get; set; } = 0;
 
         public async Task OnGetAsync()
         {
             Product = await _context.Product
-                .Include(p => p.Category).ToListAsync();
+                .Include(p => p.Category).Skip(EPP*Currentpage).Take(EPP).ToListAsync();
         }
     }
 }

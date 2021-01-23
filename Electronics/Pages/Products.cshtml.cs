@@ -19,6 +19,8 @@ namespace Electronics.Pages
             _context = context;
         }
 
+        public readonly int EPP = 12;
+
         [BindProperty(SupportsGet =true)]
         public int Currentpage { get; set; } = 0;
 
@@ -55,7 +57,7 @@ namespace Electronics.Pages
             {
                 querry = querry.Where(p => p.ProductPrice < PriceMax);
             }
-            Product = await querry.Skip(12*Currentpage).Take(12).ToListAsync();
+            Product = await querry.Skip(EPP*Currentpage).Take(EPP).ToListAsync();
         }
     }
 }
