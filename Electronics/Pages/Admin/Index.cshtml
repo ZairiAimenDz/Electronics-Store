@@ -4,3 +4,16 @@
     ViewData["Title"] = "Admin Dashboard";
     Layout = "_LayoutAdmin";
 }
+
+<div class="row">
+    <div class="col-lg-6">
+        <p>Change The Home Page Announcement Panel Image</p>
+        <form enctype="multipart/form-data" method="post">
+            <input asp-for="AnnouncementFile" class="form-control" />
+            <input type="submit" class="btn btn-primary mt-2" value="Save Changes"/>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <img class="w-100" src="~/image/announcement.png"/>
+    </div>
+</div>
