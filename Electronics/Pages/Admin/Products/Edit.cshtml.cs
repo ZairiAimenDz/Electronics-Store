@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Electronics.Data;
 using Electronics.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Electronics.Pages.Admin.Products
 {
@@ -16,10 +19,12 @@ namespace Electronics.Pages.Admin.Products
     public class EditModel : PageModel
     {
         private readonly Electronics.Data.ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public EditModel(Electronics.Data.ApplicationDbContext context)
+        public EditModel(Electronics.Data.ApplicationDbContext context,IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
@@ -52,6 +57,7 @@ namespace Electronics.Pages.Admin.Products
                 return Page();
             }
             Product.AddedDate = DateTime.Now;
+            Product.Thumbnail = UploadFile(Product.ThumbnailFile, Product.Thumbnail);
             _context.Attach(Product).State = EntityState.Modified;
 
             try
@@ -71,6 +77,29 @@ namespace Electronics.Pages.Admin.Products
             }
 
             return RedirectToPage("./Index");
+        }
+
+        private string UploadFile(IFormFile file,string existingfile)
+        {
+            string uniqueFileName = null;
+
+            if (file is not null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "image");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    if(!string.IsNullOrEmpty(existingfile))
+                        System.IO.File.Delete(Path.Combine(uploadsFolder, existingfile));
+                    file.CopyTo(fileStream);
+                }
+            }
+            else
+            {
+                uniqueFileName = existingfile;
+            }
+            return uniqueFileName;
         }
 
         private bool ProductExists(Guid id)

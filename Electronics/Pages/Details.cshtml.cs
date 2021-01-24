@@ -20,6 +20,7 @@ namespace Electronics.Pages
         }
 
         public Product Product { get; set; }
+        public List<Product> Recommended { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -30,6 +31,8 @@ namespace Electronics.Pages
 
             Product = await _context.Product
                 .Include(p => p.Category).FirstOrDefaultAsync(m => m.ID == id);
+            Recommended = await _context.Product.Include(p => p.Category)
+                .Where(p => p.Category == Product.Category).OrderBy(p=>p.AddedDate).Take(3).ToListAsync();
 
             if (Product == null)
             {

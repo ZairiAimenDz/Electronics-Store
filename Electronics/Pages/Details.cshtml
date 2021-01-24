@@ -18,15 +18,65 @@
     <div class="col-lg-6">
         <h3 class="mb-2 font-weight-bold text-warning">@Model.Product.ProductPrice DA</h3>
         <h2>@Model.Product.ProductName</h2>
-        <hr />
+        <div class="py-3">
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-money-bill-wave"></i> Buy Now
+            </button>
+            <a href="#" class="btn btn-warning"><i class="fas fa-cart-plus"></i> Add To Cart</a>
+        </div>
         <p>@Html.Raw(Model.Product.ProductDescription)</p>
     </div>
     <div class="col-lg-6">
-        <img class="w-100" src="~/image/@Model.Product.Thumbnail"/>
+        <img class="w-100" src="~/image/@Model.Product.Thumbnail" />
+    </div>
+</div>
+<hr style="width:70%;align-self:center" class="m-5 mx-auto"/>
+<div>
+    <div class="row p-2 px-3">
+        <h3>You May Also Want To See :</h3>
+        <div class="ml-auto">
+            <a class="btn btn-outline-danger" asp-page="/Products" asp-route-categoryid="@Model.Product.CategoryID">See All In @Model.Product.Category.CategoryName</a>
+        </div>    
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Recommended)
+        {
+            <div class="col-sm-3">
+                <div class="card border-0 rounded-0 shadow-sm h-100">
+                    <a asp-page="./Details" asp-route-id="@item.ID">
+                        <img src="~/image/@item.Thumbnail" class="card-img-top" alt="Product Image">
+                    </a>
+                    <div class="card-body p-2">
+                        <a asp-page="./Details" asp-route-id="@item.ID" class="btn p-0"><h5 class="card-title">@item.ProductName</h5></a>
+                    </div>
+                    <div class="card-footer border-0">
+                        <span>@item.ProductPrice DA</span>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
 
-
-<div>
-    <a asp-page="./Index">Back to List</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Buy This laptop Now</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Buy Yours Now By Calling The Follwing Number :</p>
+                <p class="text-primary">(0123) 45 67 89</p>
+                <p>And We'll Keep It For You When You Come To Our Store On The Following Adress :</p>
+                <p class="text-success">Random Street , Random Country</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+
