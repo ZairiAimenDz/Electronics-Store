@@ -32,7 +32,7 @@ namespace Electronics.Pages
             Product = await _context.Product
                 .Include(p => p.Category).FirstOrDefaultAsync(m => m.ID == id);
             Recommended = await _context.Product.Include(p => p.Category)
-                .Where(p => p.Category == Product.Category).OrderBy(p=>p.AddedDate).Take(3).ToListAsync();
+                .Where(p => p.Category == Product.Category && p.ID != Product.ID).OrderBy(p=>p.AddedDate).Take(3).ToListAsync();
 
             if (Product == null)
             {

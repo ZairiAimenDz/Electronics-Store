@@ -1,4 +1,16 @@
-﻿<li class="nav-item">
-    <a href="#" class="nav-link text-dark"><i class="fas fa-shopping-cart"></i><span class="badge badge-light">12</span></a>
-    
+﻿@inject ProtectedLocalStorage storage
+
+<li class="nav-item">
+    <a href="" class="nav-link text-dark" ><i class="fas fa-shopping-cart"></i><span class="badge badge-light">@a</span></a>
 </li>
+
+
+@code{
+    private int a;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var val = await storage.GetAsync<int>("cartcount");
+        a = val.Value;
+    }
+}

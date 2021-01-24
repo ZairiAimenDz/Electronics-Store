@@ -1,0 +1,26 @@
+﻿@inject ProtectedLocalStorage storage
+
+<a @onclick="()=>saveElementtoCart()" class="btn btn-warning"><i class="fas fa-cart-plus"></i> Add To Cart</a>
+
+@code{
+    [Parameter]
+    public Guid ItemID { get; set; }
+
+    List<Guid> items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var itemsarr = await storage.GetAsync<Guid[]>("cartitems");
+        if(itemsarr.Value is not null)
+        {
+            items = itemsarr.Value.ToList();
+        }
+    }
+
+    private async void saveElementtoCart()
+    {
+        items.Add(ItemID);
+        await storage.SetAsync("cartitems", items);
+        await storage.SetAsync("cartcount", items.Count());
+    }
+}
