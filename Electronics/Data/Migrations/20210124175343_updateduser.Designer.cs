@@ -4,14 +4,16 @@ using Electronics.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Electronics.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210124175343_updateduser")]
+    partial class updateduser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,25 +37,6 @@ namespace Electronics.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("Electronics.Models.Order", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ApplicationUserID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ApplicationUserID");
-
-                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Electronics.Models.Product", b =>
@@ -154,10 +137,6 @@ namespace Electronics.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -209,8 +188,6 @@ namespace Electronics.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -297,37 +274,6 @@ namespace Electronics.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.Property<Guid>("OrderProductsID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ProductOrdersID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("OrderProductsID", "ProductOrdersID");
-
-                    b.HasIndex("ProductOrdersID");
-
-                    b.ToTable("OrderProduct");
-                });
-
-            modelBuilder.Entity("Electronics.Models.ApplicationUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Electronics.Models.Order", b =>
-                {
-                    b.HasOne("Electronics.Models.ApplicationUser", "Client")
-                        .WithMany("Orders")
-                        .HasForeignKey("ApplicationUserID");
-
-                    b.Navigation("Client");
-                });
-
             modelBuilder.Entity("Electronics.Models.Product", b =>
                 {
                     b.HasOne("Electronics.Models.Category", "Category")
@@ -390,29 +336,9 @@ namespace Electronics.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.HasOne("Electronics.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("OrderProductsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Electronics.Models.Order", null)
-                        .WithMany()
-                        .HasForeignKey("ProductOrdersID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Electronics.Models.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Electronics.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<Electronics.Models.ApplicationUser> SignInManager
+@inject UserManager<Electronics.Models.ApplicationUser> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
@@ -13,7 +13,7 @@
         }
         else
         {
-            <component type="typeof(Electronics.Components.ShoppingCart)" render-mode="ServerPrerendered" />
+            <component type="typeof(Electronics.Components.ShoppingCart)" render-mode="Static" />
         }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user"></i></a>

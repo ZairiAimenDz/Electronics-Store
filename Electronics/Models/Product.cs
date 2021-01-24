@@ -28,5 +28,6 @@ namespace Electronics.Models
 
         [NotMapped]
         public IFormFile ThumbnailFile { get; set; }
+        public List<Order> ProductOrders { get; set; }
     }
 }

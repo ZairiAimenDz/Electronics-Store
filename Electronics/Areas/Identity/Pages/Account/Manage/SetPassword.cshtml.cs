@@ -11,12 +11,12 @@ namespace Electronics.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Electronics.Models.ApplicationUser> _userManager;
+        private readonly SignInManager<Electronics.Models.ApplicationUser> _signInManager;
 
         public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<Electronics.Models.ApplicationUser> userManager,
+            SignInManager<Electronics.Models.ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

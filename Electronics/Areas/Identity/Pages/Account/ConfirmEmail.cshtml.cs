@@ -14,9 +14,9 @@ namespace Electronics.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Electronics.Models.ApplicationUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<Electronics.Models.ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
