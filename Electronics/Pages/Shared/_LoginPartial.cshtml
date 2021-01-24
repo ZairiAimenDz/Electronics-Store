@@ -13,9 +13,7 @@
         }
         else
         {
-            <li class="nav-item">
-                <a class="nav-link text-dark"><i class="fas fa-shopping-cart"></i></a>
-            </li>
+            <component type="typeof(Electronics.Components.ShoppingCart)" render-mode="ServerPrerendered" />
         }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user"></i></a>
