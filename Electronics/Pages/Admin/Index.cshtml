@@ -4,16 +4,42 @@
     ViewData["Title"] = "Admin Dashboard";
     Layout = "_LayoutAdmin";
 }
+<div class="row my-4">
+    <div class="col-lg-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Number Of Orders</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.NumberOfOrder</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">UnTreated Ordered</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.NumberOfOrderUnt</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Number Of Clients</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.NumberOfClients</h5>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row my-3">
     <div class="col-lg-6">
         <p>Change The Home Page Announcement Panel Image</p>
         <form enctype="multipart/form-data" method="post">
             <input asp-for="AnnouncementFile" class="form-control" />
-            <input type="submit" class="btn btn-primary mt-2" value="Save Changes"/>
+            <input type="submit" class="btn btn-primary mt-2" value="Save Changes" />
         </form>
     </div>
     <div class="col-lg-6">
-        <img class="w-100" src="~/image/announcement.png"/>
+        <img class="w-100" src="~/image/announcement.png" />
     </div>
 </div>

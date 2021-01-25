@@ -1,0 +1,59 @@
+﻿@page
+@model Electronics.Pages.Admin.Orders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Payed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].GettingDelivered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].DeliveredAndDone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GettingDelivered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveredAndDone)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.ID">See Details</a>
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Remove</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

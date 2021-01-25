@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Electronics.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,14 +15,23 @@ namespace Electronics.Pages.Admin
     [Authorize(Roles ="Admin")]
     public class IndexModel : PageModel
     {
+        private readonly ApplicationDbContext context;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public IndexModel(IWebHostEnvironment webHostEnvironment)
+        public IndexModel(ApplicationDbContext context ,IWebHostEnvironment webHostEnvironment)
         {
+            this.context = context;
             this.webHostEnvironment = webHostEnvironment;
         }
+        public int NumberOfOrder;
+        public int NumberOfOrderUnt;
+        public int NumberOfClients;
+
         public void OnGet()
         {
+            NumberOfOrder = context.Order.Count();
+            NumberOfOrderUnt = context.Order.Where(o => o.GettingDelivered).Count();
+            NumberOfClients = context.Users.Count()-1;
         }
 
         [BindProperty]

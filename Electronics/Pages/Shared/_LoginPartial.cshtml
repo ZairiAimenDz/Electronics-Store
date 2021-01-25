@@ -13,9 +13,12 @@
         }
         else
         {
-            <component type="typeof(Electronics.Components.ShoppingCart)" 
-                       param-url="@Url.Page("Cart")"
-                       render-mode="Server" />
+            <li class="nav-item">
+                <a asp-page="/User/Orders" class="nav-link text-dark"><i class="fas fa-list"></i></a>
+            </li>
+            <li class="nav-item">
+                <a asp-page="/Cart" class="nav-link text-dark"><i class="fas fa-shopping-cart"></i></a>
+            </li>
         }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user"></i></a>

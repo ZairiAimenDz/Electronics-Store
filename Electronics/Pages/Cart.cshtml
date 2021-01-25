@@ -5,5 +5,12 @@
 }
 
 
-<component type="typeof(Electronics.Components.CartView)" 
+<component type="typeof(Electronics.Components.CartView)"
+           param-UserName="@User.Identity.Name"
+           param-RedirectURL="@Url.Page("/User/Orders")"
            render-mode="Server" />
+
+
+@section Scripts{
+    <script src="_framework/blazor.server.js"></script>
+}

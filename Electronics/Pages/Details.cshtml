@@ -30,13 +30,13 @@
         <img class="w-100" src="~/image/@Model.Product.Thumbnail" />
     </div>
 </div>
-<hr style="width:70%;align-self:center" class="m-5 mx-auto"/>
+<hr style="width:70%;align-self:center" class="m-5 mx-auto" />
 <div>
     <div class="row p-2 px-3">
         <h3>You May Also Want To See :</h3>
         <div class="ml-auto">
             <a class="btn btn-outline-danger" asp-page="/Products" asp-route-categoryid="@Model.Product.CategoryID">See All In @Model.Product.Category.CategoryName</a>
-        </div>    
+        </div>
     </div>
     <div class="row">
         @foreach (var item in Model.Recommended)
@@ -80,3 +80,8 @@
     </div>
 </div>
 
+
+
+@section Scripts{
+    <script src="_framework/blazor.server.js"></script>
+}
