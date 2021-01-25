@@ -13,7 +13,9 @@
         }
         else
         {
-            <component type="typeof(Electronics.Components.ShoppingCart)" render-mode="Server" />
+            <component type="typeof(Electronics.Components.ShoppingCart)" 
+                       param-url="@Url.Page("Cart")"
+                       render-mode="Server" />
         }
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fas fa-user"></i></a>

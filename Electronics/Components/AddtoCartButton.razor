@@ -11,15 +11,20 @@
     protected override async Task OnInitializedAsync()
     {
         var itemsarr = await storage.GetAsync<Guid[]>("cartitems");
-        if(itemsarr.Value is not null)
+        if(itemsarr.Success && itemsarr.Value is not null)
         {
             items = itemsarr.Value.ToList();
+        }
+        else
+        {
+            items = new List<Guid>();
         }
     }
 
     private async void saveElementtoCart()
     {
-        items.Add(ItemID);
+        if(!items.Contains(ItemID))
+            items.Add(ItemID);
         await storage.SetAsync("cartitems", items);
         await storage.SetAsync("cartcount", items.Count());
     }
