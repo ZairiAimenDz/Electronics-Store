@@ -22,7 +22,10 @@
             <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-money-bill-wave"></i> Buy Now
             </button>
-            <component type="typeof(Electronics.Components.AddtoCartButton)" param-ItemID="@Model.Product.ID" render-mode="Server" />
+            @if (User.Identity.IsAuthenticated)
+            {
+                <component type="typeof(Electronics.Components.AddtoCartButton)" param-ItemID="@Model.Product.ID" render-mode="Server" />
+            }
         </div>
         <p>@Html.Raw(Model.Product.ProductDescription)</p>
     </div>
