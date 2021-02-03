@@ -28,3 +28,19 @@ Add A UserRole Tuple To Your Database Containing The ID of the User And The Role
 
 
 ## ScreenShots
+
+![Home](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Home.png)
+
+![List](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Products.png)
+
+![Search](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/ProductSearch.png)
+
+![Details](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Details.png)
+
+![Cart](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Cart.png)
+
+![Admin](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Admin.png)
+
+![Category](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Category.png)
+
+![AdminIndex](https://github.com/ZairiAimenDz/Electronics-Store/blob/master/Images/Index.png)
